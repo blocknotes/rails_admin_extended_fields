@@ -1,4 +1,4 @@
-# rails_admin_extended_fields
+# rails_admin_extended_fields [![Gem Version](https://badge.fury.io/rb/rails_admin_extended_fields.svg)](https://badge.fury.io/rb/rails_admin_extended_fields)
 
 A [rails_admin](https://github.com/sferik/rails_admin) plugin to add more options to fields.
 
