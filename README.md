@@ -4,17 +4,17 @@ A [rails_admin](https://github.com/sferik/rails_admin) plugin to add more option
 
 Features:
 
-- nested sortable tabs
+- load fields css classes from models
 
-- load fields css classes from model
+- nested sortable tabs (with drag and drop)
 
-- nested_list: has_many associations alternative view (list and accordion)
+- *nested_list*: has_many associations alternative views (list and accordion)
 
-- nested_one: has_one associations alternative view
+- *nested_one*: has_one associations alternative view
 
 Notes:
 
-- nested_list and nested_one don't support creating new records and deleting existing ones
+- *nested_list* and *nested_one* don't support creating new records and deleting existing ones
 
 ## Install
 
@@ -27,6 +27,29 @@ Notes:
 `//= require rails_admin_extended_fields`
 
 ## Usage
+
+#### load fields css classes from model
+
+It can be useful to add specific classes to some fields using Single Table Inheritance models:
+
+```ruby
+class Block < ApplicationRecord
+  def type_enum
+    @type_enum ||= [ 'BlockImage', 'BlockText' ]
+  end
+end
+
+class BlockImage < Block
+  def css_class
+    @css_class ||= {
+      abstract: 'hide',
+      name: 'hide'
+    }
+  end
+end
+```
+
+Class 'hide' is added to *abstract* and *name* fields of *BlockImage* only.
 
 #### nested sortable tabs
 
@@ -63,29 +86,6 @@ Example: a parent model *Page* and a nested model *Block* (page has many blocks)
 ```
 
 - If you edit a *Page* in rails_admin *Blocks* should be draggable
-
-#### load fields css classes from model
-
-It can be useful to add specific classes to some fields using Single Table Inheritance models:
-
-```ruby
-class Block < ApplicationRecord
-  def type_enum
-    @type_enum ||= [ 'BlockImage', 'BlockText' ]
-  end
-end
-
-class BlockImage < Block
-  def css_class
-    @css_class ||= {
-      abstract: 'hide',
-      name: 'hide'
-    }
-  end
-end
-```
-
-Class 'hide' is added to *abstract* and *name* fields of *BlockImage* only.
 
 #### nested_list
 
