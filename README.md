@@ -14,7 +14,9 @@ Features:
 
 `gem 'rails_admin_extended_fields'`
 
-- Edit or create *app/assets/javascripts/rails_admin/custom/ui.js* and add: `//= require rails_admin_extended_fields`
+- Edit or create *app/assets/javascripts/rails_admin/custom/ui.js* and add:
+
+`//= require rails_admin_extended_fields`
 
 ## Usage
 
@@ -22,7 +24,7 @@ Features:
 
 Example with a parent model *Page* and a nested model *Block*
 
-- Add a position field to your nested model:
+- Add a position field to your nested model (ex. an integer or float column):
 
 `rails generate migration AddPositionToBlocks position:float`
 
@@ -46,7 +48,7 @@ Example with a parent model *Page* and a nested model *Block*
   config.model Page do
     edit do
       field :blocks do
-        css_class 'nested-sortable'  # required by the plugin
+        css_class 'nested-sortable'
       end
     end
   end
@@ -56,20 +58,28 @@ Example with a parent model *Page* and a nested model *Block*
 
 #### load fields css classes from model
 
-It can be useful to hide some fields using Single Table Inheritance models.
+It can be useful to add specific classes to some fields using Single Table Inheritance models.
 
 - Add to a model:
 
 ```ruby
+class Block < ApplicationRecord
+  def type_enum
+    @type_enum ||= [ 'BlockImage', 'BlockText' ]
+  end
+end
+
+class BlockImage < Block
   def css_class
     @css_class ||= {
       abstract: 'hide',
       name: 'hide'
     }
   end
+end
 ```
 
-- Class 'hide' is added to *abstract* and *name* fields
+- Class 'hide' is added to *abstract* and *name* fields of *BlockImage* only
 
 ## Contributors
 

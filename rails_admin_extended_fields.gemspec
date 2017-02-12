@@ -7,8 +7,8 @@ require "rails_admin_extended_fields/version"
 Gem::Specification.new do |s|
   s.name        = "rails_admin_extended_fields"
   s.version     = RailsAdminExtendedFields::VERSION
-  s.authors     = [""]
-  s.email       = [""]
+  s.authors     = ["Mattia Roccoberton"]
+  s.email       = ["mat@blocknot.es"]
   s.homepage    = "https://github.com/blocknotes/rails_admin_extended_fields"
   s.summary     = "RailsAdminExtendedFields plugin"
   s.description = "RailsAdminExtendedFields adds more options to rails_admin fields"
@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 5.0.1"
+  # s.add_dependency "rails", "~> 5.0.1"
 end
