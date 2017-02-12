@@ -1,0 +1,10 @@
+.controls.col-sm-10{data: { nestedmany: true }}
+  = form.errors_for(field)
+  = form.help_for(field)
+.clearfix
+
+%hr
+.nested_list{ style: 'padding-left: 12px' }
+  = form.fields_for field.name do |nested_form|
+    = nested_form.generate({action: :nested, model_config: field.associated_model_config, nested_in: field })
+    %hr

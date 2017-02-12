@@ -8,6 +8,14 @@ Features:
 
 - load fields css classes from model
 
+- nested_list: has_many associations alternative view (list and accordion)
+
+- nested_one: has_one associations alternative view
+
+Notes:
+
+- nested_list and nested_one don't support creating new records and deleting existing ones
+
 ## Install
 
 - Add to the Gemfile:
@@ -78,6 +86,27 @@ end
 ```
 
 Class 'hide' is added to *abstract* and *name* fields of *BlockImage* only.
+
+#### nested_list
+
+- Present an has_many association as a list:
+
+`field :page_options, :nested_list`
+
+- Present an has_many association as an accordion with drag and drop reordering:
+
+```ruby
+  field :page_options, :nested_list do
+    accordion true
+    sortable true
+  end
+```
+
+#### nested_one
+
+- Present an has_one association:
+
+`field :page_info, :nested_one`
 
 ## Contributors
 
