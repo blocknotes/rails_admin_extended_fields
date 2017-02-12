@@ -1,0 +1,38 @@
+/* rails admin config example
+  # parent model:
+  field :blocks do
+    active true
+    css_class 'blocks_field nested-sortable'
+    inline_add false
+  end
+  ...
+  # nested model:
+  field :position do
+    html_attributes 'data-sortable': 'true'
+  end
+ */
+function set_sortable( element, cnt, position ) {
+  element.addClass( 'nested-sortable-' + cnt );
+  // Add tab content reference
+  element.find('> .controls .nav-tabs > li').each( function( i ) {
+    $(this).attr( 'data-tab', i );
+  });
+  // Init sortable
+  element.find('> .controls .nav-tabs').attr( 'data-sortable', cnt );
+  element.find('> .controls .nav-tabs').sortable({
+    update: function( event, ui ) {
+      // Update each position field
+      var positions = $('.nested-sortable-' + $(this).attr('data-sortable') + ' input[data-sortable]');
+      var len = positions.length;
+      $(this).find('> li').each( function( i ) {
+        positions.eq( $(this).attr( 'data-tab' ) ).val( len-- );
+      });
+    }
+  });
+}
+
+$(document).on('rails_admin.dom_ready', function() {
+  $('.nested-sortable').each( function( i ) {
+    set_sortable( $(this), i + 1 );
+  });
+});
