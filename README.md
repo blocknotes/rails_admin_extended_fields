@@ -22,7 +22,7 @@ Features:
 
 #### nested sortable tabs
 
-Example with a parent model *Page* and a nested model *Block*
+Example: a parent model *Page* and a nested model *Block* (page has many blocks)
 
 - Add a position field to your nested model (ex. an integer or float column):
 
@@ -58,9 +58,7 @@ Example with a parent model *Page* and a nested model *Block*
 
 #### load fields css classes from model
 
-It can be useful to add specific classes to some fields using Single Table Inheritance models.
-
-- Add to a model:
+It can be useful to add specific classes to some fields using Single Table Inheritance models:
 
 ```ruby
 class Block < ApplicationRecord
@@ -79,7 +77,7 @@ class BlockImage < Block
 end
 ```
 
-- Class 'hide' is added to *abstract* and *name* fields of *BlockImage* only
+Class 'hide' is added to *abstract* and *name* fields of *BlockImage* only.
 
 ## Contributors
 
