@@ -30,6 +30,10 @@ module RailsAdmin::Config::Fields::Types
       false
     end
 
+    register_instance_option :orderable do
+      false
+    end
+
     register_instance_option :sortable do
       false
     end
