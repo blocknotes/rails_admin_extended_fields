@@ -11,6 +11,8 @@
     html_attributes 'data-sortable': 'true'
   end
  */
+// Handle style: .ui-sortable-handle > a::before { content: '\2194  '; }
+
 function set_sortable( element, cnt, position ) {
   element.addClass( 'nested-sortable-' + cnt );
   // Add tab content reference
@@ -23,9 +25,8 @@ function set_sortable( element, cnt, position ) {
     update: function( event, ui ) {
       // Update each position field
       var positions = $('.nested-sortable-' + $(this).attr('data-sortable') + ' input[data-sortable]');
-      var len = positions.length;
       $(this).find('> li').each( function( i ) {
-        positions.eq( $(this).attr( 'data-tab' ) ).val( len-- );
+        positions.eq( $(this).attr( 'data-tab' ) ).val( i );
       });
     }
   });

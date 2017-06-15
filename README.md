@@ -63,7 +63,7 @@ Example: a parent model *Page* and a nested model *Block* (page has many blocks)
 
 - Add a default ordered scope to the nested model:
 
-`default_scope { order( position: :desc ) }`
+`default_scope { order( :position ) }`
 
 - rails_admin config:
 
@@ -86,6 +86,8 @@ Example: a parent model *Page* and a nested model *Block* (page has many blocks)
 ```
 
 - If you edit a *Page* in rails_admin *Blocks* should be draggable
+
+- If you want to add a symbol to draggable handlers you can add a CSS rule like: `.ui-sortable-handle > a::before { content: '\2194  '; }`
 
 #### nested_list
 
