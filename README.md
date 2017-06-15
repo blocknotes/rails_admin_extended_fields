@@ -1,3 +1,12 @@
+# PROJECT UNMAINTAINED
+
+> *This project is not maintained anymore*
+>
+> *If you like it or continue to use it fork it please.*
+
+---
+---
+
 # rails_admin_extended_fields [![Gem Version](https://badge.fury.io/rb/rails_admin_extended_fields.svg)](https://badge.fury.io/rb/rails_admin_extended_fields)
 
 A [rails_admin](https://github.com/sferik/rails_admin) plugin to add more options to fields.
@@ -63,7 +72,7 @@ Example: a parent model *Page* and a nested model *Block* (page has many blocks)
 
 - Add a default ordered scope to the nested model:
 
-`default_scope { order( position: :desc ) }`
+`default_scope { order( :position ) }`
 
 - rails_admin config:
 
@@ -86,6 +95,8 @@ Example: a parent model *Page* and a nested model *Block* (page has many blocks)
 ```
 
 - If you edit a *Page* in rails_admin *Blocks* should be draggable
+
+- If you want to add a symbol to draggable handlers you can add a CSS rule like: `.ui-sortable-handle > a::before { content: '\2194  '; }`
 
 #### nested_list
 
